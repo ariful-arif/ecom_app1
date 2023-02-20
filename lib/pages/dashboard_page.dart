@@ -1,3 +1,6 @@
+import 'package:ecom_app1/auth/firebase_auth_service.dart';
+import 'package:ecom_app1/pages/login_page.dart';
+import 'package:ecom_app1/pages/new_product_page.dart';
 import 'package:flutter/material.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -10,6 +13,61 @@ class DashboardPage extends StatefulWidget {
 class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Dashboard'),
+        actions: [
+          IconButton(onPressed: (){
+            FirebaseAuthService.logoutAdmin().then((_) => Navigator.pushReplacementNamed(context, LoginPage.routeName));
+          }, icon: Icon(Icons.logout),)
+        ],
+      ),
+      body: GridView.count(crossAxisCount: 2,
+      crossAxisSpacing: 2,
+      mainAxisSpacing: 2,
+      children: [
+        ElevatedButton(onPressed: () => Navigator.pushNamed(context, NewProductPage.routeName),
+            style: ElevatedButton.styleFrom(
+              primary: Colors.redAccent,
+            ),
+            child: const Text('Add Product'),),
+        ElevatedButton(onPressed: () => Navigator.pushNamed(context, NewProductPage.routeName),
+            style: ElevatedButton.styleFrom(
+              primary: Colors.orangeAccent,
+            ),
+            child: const Text('View Product'),),
+
+        ElevatedButton(onPressed: () => Navigator.pushNamed(context, NewProductPage.routeName),
+          style: ElevatedButton.styleFrom(
+            primary: Colors.blue,
+          ),
+          child: const Text('Orders'),),
+
+        ElevatedButton(onPressed: () => Navigator.pushNamed(context, NewProductPage.routeName),
+          style: ElevatedButton.styleFrom(
+            primary: Colors.blueGrey,
+          ),
+          child: const Text('Customers'),),
+
+        ElevatedButton(onPressed: () => Navigator.pushNamed(context, NewProductPage.routeName),
+          style: ElevatedButton.styleFrom(
+            primary: Colors.lightBlueAccent,
+          ),
+          child: const Text('Categories'),),
+
+        ElevatedButton(onPressed: () => Navigator.pushNamed(context, NewProductPage.routeName),
+          style: ElevatedButton.styleFrom(
+            primary: Colors.green,
+          ),
+          child: const Text('Purchase History'),),
+
+        ElevatedButton(onPressed: () => Navigator.pushNamed(context, NewProductPage.routeName),
+          style: ElevatedButton.styleFrom(
+            primary: Colors.brown,
+          ),
+          child: const Text('Report'),),
+
+      ],),
+    );
   }
 }
