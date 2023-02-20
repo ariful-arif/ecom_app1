@@ -15,11 +15,11 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dashboard'),
+        title: const Text('Dashboard'),
         actions: [
           IconButton(onPressed: (){
             FirebaseAuthService.logoutAdmin().then((_) => Navigator.pushReplacementNamed(context, LoginPage.routeName));
-          }, icon: Icon(Icons.logout),)
+          }, icon: const Icon(Icons.logout),)
         ],
       ),
       body: GridView.count(crossAxisCount: 2,

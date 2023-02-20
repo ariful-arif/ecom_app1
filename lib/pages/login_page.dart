@@ -1,7 +1,9 @@
 import 'package:ecom_app1/auth/firebase_auth_service.dart';
 import 'package:ecom_app1/pages/dashboard_page.dart';
+import 'package:ecom_app1/providers/product_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   static const String routeName = '/login';
@@ -83,7 +85,16 @@ class _LoginPageState extends State<LoginPage> {
       try{
         final user = await FirebaseAuthService.loginAdmin(_email!, _password!);
         if (user != null) {
-          Navigator.pushReplacementNamed(context, DashboardPage.routeName);
+          final isAdmin = Provider
+          .of<ProductProvider>(context, listen: false)
+          .checkAdmin(_email!);
+          if(await isAdmin){
+            Navigator.pushReplacementNamed(context, DashboardPage.routeName);
+          }else{
+            setState(() {
+              errMsg = 'you are not Admin';
+            });
+          }
         }
       }on FirebaseAuthException catch (e) {
         setState(() {

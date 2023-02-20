@@ -12,7 +12,7 @@ class _NewProductPageState extends State<NewProductPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('New Product'),
+        title: const Text('New Product'),
       ),
     );
   }
