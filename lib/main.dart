@@ -2,6 +2,7 @@ import 'package:ecom_app1/pages/dashboard_page.dart';
 import 'package:ecom_app1/pages/launcher_page.dart';
 import 'package:ecom_app1/pages/login_page.dart';
 import 'package:ecom_app1/pages/new_product_page.dart';
+import 'package:ecom_app1/pages/product_list_page.dart';
 import 'package:ecom_app1/providers/product_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
             LoginPage.routeName : (context) => LoginPage(),
             DashboardPage.routeName : (context) => DashboardPage(),
             NewProductPage.routeName : (context) => NewProductPage(),
+            ProductListPage.routeName : (context) => ProductListPage(),
           },
       ),
     );

@@ -26,10 +26,10 @@ class _LoginPageState extends State<LoginPage> {
           key: _formKey,
           child: ListView(
             shrinkWrap: true,
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             children: [
-              Center(child: Padding(
-                padding: const EdgeInsets.all(25.0),
+              const Center(child: Padding(
+                padding: EdgeInsets.all(25.0),
                 child: Text('Admin Login'),
               )),
               TextFormField(
@@ -43,12 +43,12 @@ class _LoginPageState extends State<LoginPage> {
                 onSaved: (value){
                   _email = value;
                 },
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Email Address',
                   border: OutlineInputBorder()
                 ),
               ),
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
               TextFormField(
                 obscureText: true,
                 validator: (value) {
@@ -60,18 +60,18 @@ class _LoginPageState extends State<LoginPage> {
                 onSaved: (value){
                   _password = value;
                 },
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Password',
                   border: OutlineInputBorder()
                 ),
               ),
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
               Center(
                 child: ElevatedButton(onPressed: _loginAdmin,
-                    child: Text('Login')),
+                    child: const Text('Login')),
               ),
-              SizedBox(height: 20,),
-              Center(child: Text(errMsg , style: TextStyle(fontSize: 16,color: Colors.red),)),
+              const SizedBox(height: 20,),
+              Center(child: Text(errMsg , style: const TextStyle(fontSize: 16,color: Colors.red),)),
             ],
           ),
         ),

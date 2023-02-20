@@ -1,7 +1,10 @@
 import 'package:ecom_app1/auth/firebase_auth_service.dart';
 import 'package:ecom_app1/pages/login_page.dart';
 import 'package:ecom_app1/pages/new_product_page.dart';
+import 'package:ecom_app1/pages/product_list_page.dart';
+import 'package:ecom_app1/providers/product_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DashboardPage extends StatefulWidget {
   static const String routeName = '/dashboard';
@@ -11,6 +14,15 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
+  late ProductProvider _productProvider;
+
+  @override
+  void didChangeDependencies() {
+    _productProvider = Provider.of<ProductProvider>(context, listen: false);
+    _productProvider.getAllCategories();
+    _productProvider.getAllProducts();
+    super.didChangeDependencies();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +43,7 @@ class _DashboardPageState extends State<DashboardPage> {
               primary: Colors.redAccent,
             ),
             child: const Text('Add Product'),),
-        ElevatedButton(onPressed: () => Navigator.pushNamed(context, NewProductPage.routeName),
+        ElevatedButton(onPressed: () => Navigator.pushNamed(context, ProductListPage.routeName),
             style: ElevatedButton.styleFrom(
               primary: Colors.orangeAccent,
             ),
