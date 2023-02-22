@@ -7,6 +7,7 @@ class ProductModel{
   String ? catagory;
   num? price;
   String ? localImagePath;
+  String ? imageName;
   String ? imageDownloadUrl;
   String ? description;
   int stock;
@@ -22,6 +23,7 @@ class ProductModel{
       this.imageDownloadUrl,
       this.description,
       this.stock =1,
+    this.imageName,
       this.isAvailable = true,
       this.purchaseDate});
 
@@ -37,6 +39,7 @@ class ProductModel{
       'stock' : stock,
       'isAvailable' : isAvailable,
       'timestamp' : purchaseDate,
+      'imageName' : imageName,
     };
     return map;
   }
@@ -52,10 +55,11 @@ class ProductModel{
     stock: map['stock'],
     isAvailable: map['isAvailable'],
     purchaseDate: map['Timestamp'],
+    imageName: map['imageName'],
   );
 
   @override
   String toString() {
-    return 'ProductModel{id: $id, name: $name, catagory: $catagory, price: $price, localImagePath: $localImagePath, imageDownloadUrl: $imageDownloadUrl, description: $description, stock: $stock, isAvailable: $isAvailable, purchaseDate: $purchaseDate}';
+    return 'ProductModel{id: $id, name: $name, catagory: $catagory, price: $price, localImagePath: $localImagePath, imageName: $imageName, imageDownloadUrl: $imageDownloadUrl, description: $description, stock: $stock, isAvailable: $isAvailable, purchaseDate: $purchaseDate}';
   }
 }

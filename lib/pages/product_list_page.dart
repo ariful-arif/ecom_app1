@@ -28,9 +28,9 @@ class _ProductListPageState extends State<ProductListPage> {
         appBar: AppBar(
           title: const Text("Product List"),
         ),
-        body:_productProvider.productList.isEmpty? const Center(
+        body: _productProvider.productList.isEmpty ? const Center(
           child: Text('No items found'),
-        ): ListView.builder(
+        ) : ListView.builder(
           itemCount: _productProvider.productList.length,
           itemBuilder: (context, index) {
             final product = _productProvider.productList[index];
@@ -38,14 +38,26 @@ class _ProductListPageState extends State<ProductListPage> {
               elevation: 5,
               child: ListTile(
                 title: Text(product.name!),
-                leading: Image.file(File(product.localImagePath!),
-                width: 100,
-                height: 100,
-                fit: BoxFit.cover,),
+                leading: fabeImageWidget(product.imageDownloadUrl!,
+                  // width: 100,
+                  // height: 100,
+                  // fit: BoxFit.cover,
+                ),
                 trailing: Chip(label: Text('$takaSymbol${product.price}')),
               ),
             );
           },
-        ));
+        )
+    );
   }
-}
+    Widget fabeImageWidget(String url){
+      return FadeInImage.assetNetwork(
+        fadeInDuration: const Duration(seconds: 2),
+          fadeInCurve: Curves.bounceInOut,
+          fit: BoxFit.cover,
+          placeholder: 'images/img.png',
+          image: url
+      );
+    }
+  }
+
